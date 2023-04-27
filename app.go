@@ -95,15 +95,17 @@ func (a *App) HandleShutdownSignals() {
 }
 
 func (a *App) HandleStopSound() {
-	<-a.mStop.ClickedCh
+	for {
+		<-a.mStop.ClickedCh
 
-	speaker.Clear()
-	if a.streamer != nil {
-		err := (*a.streamer).Close()
-		if err != nil {
-			panic(err)
+		speaker.Clear()
+		if a.streamer != nil {
+			err := (*a.streamer).Close()
+			if err != nil {
+				panic(err)
+			}
+			a.streamer = nil
 		}
-		a.streamer = nil
 	}
 }
 
