@@ -37,5 +37,8 @@
 	
 	<key>NSHighResolutionCapable</key>
 	<true/>
+
+	<key>LSUIElement</key>
+	<true/>
 </dict>
 </plist>
